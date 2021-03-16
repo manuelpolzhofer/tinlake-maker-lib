@@ -164,6 +164,7 @@ contract TinlakeManager {
 
         safe = true;
         glad = true;
+        // mgr is live after lock() call
         live = false;
 
         // rwaUrn allowance for rwaToken
@@ -207,6 +208,7 @@ contract TinlakeManager {
         emit Join(wad);
     }
 
+    // transfers DROP into the MGR
     function exit(uint256 wad) public operatorOnly {
         require(safe && live, "TinlakeManager/bad-state");
         require(wad <= 2 ** 255, "TinlakeManager/overflow");
