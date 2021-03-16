@@ -277,7 +277,6 @@ contract TinlakeManager {
     function unwind(uint256 endEpoch) public {
         require(!safe && glad && live, "TinlakeManager/not-soft-liquidation");
         (uint256 redeemed, , ,uint256 remainingDrop) = pool.disburse(endEpoch);
-        // here we use the urn instead of address(this)
         (, uint256 art) = vat.urns(ilk, address(urn));
 
         (, uint256 rate, , ,) = vat.ilks(ilk);
